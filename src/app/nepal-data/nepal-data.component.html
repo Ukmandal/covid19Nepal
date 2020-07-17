@@ -1,0 +1,229 @@
+<div class="col-md-12" style="text-align: center;">
+  <div mat-card-avatar>
+    <!-- <img src="./assets/covid19.png" style="height: 100px;"> -->
+    <img src="https://www.countryflags.io/NP/flat/64.png">
+    <!-- <img src="./assets/coronavirus.png"style="height: 100px;"> -->
+    <iframe src="https://nepalcorona.info/embed/nepal-map" frameborder="0" style="width:100%;height:400px;border:0px"></iframe>
+  </div>
+  <div class="same-row" style="font-weight: bold;">
+    {{now}}
+  </div>
+  <div mat-card>
+ <h1><b>Coronavirus Cases:</b></h1> <h1> {{allWorld?.cases | number}}</h1><br>
+ <h1><b>Death Cases:</b></h1> <h1> {{allWorld?.deaths | number}}</h1><br>
+ <h1><b>Recovered Cases:</b></h1> <h1> {{allWorld?.recovered | number}}</h1><br>
+  </div>
+</div>
+<br>
+<!--Table-->
+<div class="table-responsive">
+  <h1 style="text-align: center;">Covid-19 Nepal Data</h1>
+  <table mdbTable bordered="true" hover="true">
+    <!--Table head-->
+    <thead class="mdb-color darken-3">
+      <tr class="text-white">
+        <th> Tested Positive </th>
+        <th>Tested Negative</th>
+        <th>Tested Total</th>
+        <th>In Isolation</th>
+        <th>Quarantined</th>
+        <th>Tested RDT</th>
+        <th>Recovered</th>
+        <th>Deaths</th>
+      </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody mdbTableCol>
+      <tr class="table-info">
+        <td>{{nepalData?.tested_positive | number}} </td>
+        <td>{{nepalData?.tested_negative | number}} </td>
+        <td>{{nepalData?.tested_total | number}} </td>
+        <td>{{nepalData?.in_isolation | number}} </td>
+        <td>{{nepalData?.quarantined | number}} </td>
+        <td>{{nepalData?.tested_rdt | number}} </td>
+        <td>{{nepalData?.recovered | number}} </td>
+        <td>{{nepalData?.deaths | number}} </td>
+      </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
+</div>
+<!--Table-->
+<br>
+<!--Table-->
+<div class="table-responsive">
+  <h1 style="text-align: center;">Covid World Data</h1>
+  <table mdbTable bordered="true" hover="true">
+    <!--Table head-->
+    <thead class="mdb-color darken-3">
+      <tr class="text-white">
+        <th>Total Cases</th>
+        <th>Today Cases</th>
+        <th>Total Deaths</th>
+        <th>Today Deaths</th>
+        <th>Total Recovered</th>
+        <th>Today Recovered</th>
+        <th>Active</th>
+        <th>Critical</th>
+        <th>Tests</th>
+        <th>AffectedCountries</th>
+        <th>Population</th>
+      </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody mdbTableCol>
+      <tr class="table-info">
+        <td>{{allWorld?.cases | number}} </td>
+        <td>{{allWorld?.todayCases | number}} </td>
+        <td>{{allWorld?.deaths | number}} </td>
+        <td>{{allWorld?.todayDeaths | number}} </td>
+        <td>{{allWorld?.recovered | number}} </td>
+        <td>{{allWorld?.todayRecovered | number}} </td>
+        <td>{{allWorld?.active | number}} </td>
+        <td>{{allWorld?.critical | number}} </td>
+        <td>{{allWorld?.tests | number}} </td>
+        <td>{{allWorld?.affectedCountries | number}} </td>
+        <td>{{allWorld?.population | number}} </td>
+      </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
+</div>
+<!--Table-->
+
+<br>
+<!--Table-->
+<div class="table-responsive">
+  <h1 style="text-align: center;">Nepal Covid Timeline Data</h1>
+  <table mdbTable bordered="true" hover="true">
+    <!--Table head-->
+    <thead class="mdb-color darken-3">
+      <tr class="text-white">
+        <th>Date</th>
+        <th>TotalCases</th>
+        <th>NewCases</th>
+        <th>TotalRecoveries</th>
+        <th>NewRecoveries</th>
+        <th>TotalDeaths</th>
+        <th>NewDeaths</th>
+      </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody mdbTableCol *ngFor="let npltimelineData of nepaltimelineData">
+      <tr class="table-info">
+        <td>{{npltimelineData?.date}} </td>
+        <td>{{npltimelineData?.totalCases}} </td>
+        <td>{{npltimelineData?.newCases}} </td>
+        <td>{{npltimelineData?.totalRecoveries}} </td>
+        <td>{{npltimelineData?.newRecoveries}} </td>
+        <td>{{npltimelineData?.totalDeaths}} </td>
+        <td>{{npltimelineData?.newDeaths}} </td>
+      </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
+</div>
+<!--Table-->
+<br>
+<!--Table-->
+<div class="table-responsive">
+  <h1 style="text-align: center;">Covid World Countries Data</h1>
+  <table mdbTable bordered="true" hover="true">
+    <!--Table head-->
+    <thead  class="mdb-color darken-3">
+      <tr class="text-white">
+        <th>#</th>
+        <th>Country</th>
+        <th>TotalCases</th>
+        <th>NewCases</th>
+        <th>TotalDeaths</th>
+        <th>NewDeaths</th>
+        <th>TotalRecovered</th>
+        <th>ActiveCases</th>
+        <th>CriticalCases</th>
+        <th>Tests</th>
+        <th>Continent</th>
+      </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody mdbTableCol *ngFor="let allCountriesworld of allworldData, let i=index ">
+      <tr class="table-info">
+        <td>{{i+1}}</td>
+        <td>{{allCountriesworld?.country}} </td>
+        <td>{{allCountriesworld?.totalCases}} </td>
+        <td>{{allCountriesworld?.newCases}} </td>
+        <td>{{allCountriesworld?.totalDeaths}} </td>
+        <td>{{allCountriesworld?.newDeaths}} </td>
+        <td>{{allCountriesworld?.totalRecovered}} </td>
+        <td>{{allCountriesworld?.activeCases}} </td>
+        <td>{{allCountriesworld?.criticalCases}} </td>
+        <td>{{allCountriesworld?.tests}} </td>
+        <td>{{allCountriesworld?.continent}} </td>
+      </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
+</div>
+<!--Table-->
+<br>
+<!--Table-->
+<div class="table-responsive">
+  <h1 style="text-align: center;">Nepal District and Province Data</h1>
+  <table mdbTable bordered="true" hover="true">
+    <!--Table head-->
+    <thead  class="mdb-color darken-3">
+      <tr class="text-white">
+        <th>#</th>
+        <th>District Name</th>
+        <th>Province</th>
+      </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody mdbTableCol *ngFor="let nplDistrictData of nepalDistrictsData, let i=index">
+      <tr class="table-info">
+        <td scope="row">{{i+1}} </td>
+        <td>{{nplDistrictData?.title}} </td>
+        <td>{{nplDistrictData?.province}} </td>
+      </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
+</div>
+<!--Table-->
+<br>
+<!--Table-->
+<div class="table-responsive">
+  <h1 style="text-align: center;">Nepal Covid Hospital Data</h1>
+  <table mdbTable bordered="true" hover="true">
+    <!--Table head-->
+    <thead  class="mdb-color darken-3">
+      <tr class="text-white">
+        <th>Hospital Name</th>
+        <th>Contact_person</th>
+        <th>Contact_person_number</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Province</th>
+      </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody mdbTableCol *ngFor="let nplHospitalData of nepalHospitalData?.data;">
+      <tr class="table-info">
+        <td>{{nplHospitalData?.name}} </td>
+        <td>{{nplHospitalData?.contact_person}} </td>
+        <td>{{nplHospitalData?.contact_person_number}} </td>
+        <td>{{nplHospitalData?.address}} </td>
+        <td>{{nplHospitalData?.phone}} </td>
+        <td>{{nplHospitalData?.state}} </td>
+      </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
+</div>
+<!--Table-->
